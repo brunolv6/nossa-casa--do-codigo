@@ -7,6 +7,9 @@ plugins {
     id("org.jetbrains.kotlin.plugin.jpa") version "1.4.32" // este plugin é essencial para que seja gerado no-arg construtores na classes  @Entity e @Embeddable para que seja utilizadas pelo Hibernate
 }
 
+allOpen {
+    annotation("io.micronaut.http.annotation.Controller")
+}
 
 version = "0.1"
 group = "br.com.zup"
