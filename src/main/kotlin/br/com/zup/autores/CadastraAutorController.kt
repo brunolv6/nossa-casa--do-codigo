@@ -11,7 +11,7 @@ import javax.validation.Valid
 
 @Validated
 @Controller("/autores")
-class CadastraAutorController(val autorRepository: AutorRepository) {
+class CadastraAutorController(val autorRepository: AutorRepository, val correioApi: CorreioApi) {
 
     @Post
     @Transactional
@@ -19,10 +19,16 @@ class CadastraAutorController(val autorRepository: AutorRepository) {
 
         println("Requisicao => ${request}")
 
-        val autor = request.paraAutor()
+        // pegar dados do cep de api externa
+        val enderecoResponse: HttpResponse<EnderecoResponse> = correioApi.pegarEndereco(request.cep)
+
+        if(enderecoResponse.body() == null) return HttpResponse.badRequest()
+
+        val autor = request.paraAutor(enderecoResponse.body()!!)
+
         autorRepository.save(autor)
 
-        println("Autor => ${autor.nome}")
+        println("Autor Endereco => ${autor.endereco}")
 
         val uri = UriBuilder.of("/autores/{id}").expand(mutableMapOf(Pair("id", autor.id)))
 
