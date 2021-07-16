@@ -45,6 +45,9 @@ dependencies {
 
     // MYSQL
     implementation("mysql:mysql-connector-java:5.1.6") // adicionar a dependencia do banco que utilizarei
+
+    // Consumindo XML
+    implementation("io.micronaut.xml:micronaut-jackson-xml")
 }
 
 

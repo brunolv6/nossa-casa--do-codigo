@@ -10,6 +10,8 @@ import io.micronaut.http.client.annotation.Client
 @Client("https://ws.apicep.com/cep")
 interface CorreioApi {
 
-    @Get("/{cep}.json")
+    @Get("/{cep}.xml")
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
     fun pegarEndereco(cep: String): HttpResponse<EnderecoResponse>
 }
