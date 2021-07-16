@@ -8,4 +8,5 @@ class Endereco(enderecoResponse: EnderecoResponse, numero: String) {
     val code: String = enderecoResponse.code
     val state: String = enderecoResponse.state
     val city: String = enderecoResponse.city
+    val numero: String = numero
 }
