@@ -16,6 +16,8 @@ class BuscaAutoresController(val autorRepository: AutorRepository) {
     @Transactional
     fun lista(@QueryValue(defaultValue = "") email: String) : HttpResponse<Any>{
 
+        print(email)
+
         if(email.isEmpty()){
             val autores: List<Autor>  = autorRepository.findAll()
 
