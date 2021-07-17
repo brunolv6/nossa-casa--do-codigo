@@ -51,6 +51,7 @@ dependencies {
 
     // testes
     testImplementation("org.mockito:mockito-core:3.8.0")
+    testImplementation("com.h2database:h2") // h2 rodando para testes
 
 //    testAnnotationProcessor("io.micronaut:micronaut-inject-java")
 //    testImplementation("io.micronaut:micronaut-http-client")

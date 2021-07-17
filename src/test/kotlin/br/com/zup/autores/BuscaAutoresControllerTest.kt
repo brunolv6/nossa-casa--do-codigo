@@ -4,14 +4,20 @@ import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
+import io.micronaut.test.annotation.TransactionMode
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import javax.inject.Inject
 
-
-@MicronautTest // sobe um contexto para fazer a injeção de dependências (como o do client abaixo) e gerenciar os beans dentro do contexto deste teste
+// sobe um contexto para fazer a injeção de dependências (como o do client abaixo) e gerenciar os beans dentro do contexto deste teste
+@MicronautTest(
+    rollback = false,
+    transactionMode = TransactionMode.SINGLE_TRANSACTION, // trend unica do começo ao final do teste
+    transactional = false
+)
 internal class BuscaAutoresControllerTest {
 
     @field:Inject
@@ -39,11 +45,11 @@ internal class BuscaAutoresControllerTest {
         autorRepository.save(autor2)
     }
 
-//    @AfterEach
-//    internal fun tearDown() {
-//        print("teste teardown")
-//        autorRepository.deleteAll()
-//    }
+    @AfterEach
+    internal fun tearDown() {
+        print("teste teardown")
+        autorRepository.deleteAll()
+    }
 
     @Test
     internal fun `deve retornar os detalhes de um autor`() {
