@@ -12,6 +12,8 @@ jpa:
       hibernate.hbm2ddl.auto: update
       hibernate.show_sql: true
 
+
+#habilita log no contexto transacional
 logger:
   levels:
     io.micronaut.transaction: DEBUG

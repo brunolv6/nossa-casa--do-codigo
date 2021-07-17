@@ -71,9 +71,9 @@ internal class BuscaAutoresControllerTest {
 
 //    @Test
 //    internal fun `deve retornar não encontrado se o autor não existir`() {
-//        val response: HttpResponse<Any?> = client.toBlocking().exchange("/autores?email=autornaoexistente@gmail.com")
+//        val response: HttpResponse<Any?> = client.toBlocking().exchange("/autores?email=autornaoexistente@gmail.com", Any::class.java)
 //
-//        assertEquals(HttpStatus.NOT_FOUND, client.toBlocking().exchange("/autores?email=autornaoexistente@gmail.com"))
+//        assertEquals(HttpStatus.NOT_FOUND, response.status)
 //        assertNull(response.body())
 //    }
 }

@@ -48,6 +48,15 @@ dependencies {
 
     // Consumindo XML
     implementation("io.micronaut.xml:micronaut-jackson-xml")
+
+    // testes
+    testImplementation("org.mockito:mockito-core:3.8.0")
+
+//    testAnnotationProcessor("io.micronaut:micronaut-inject-java")
+//    testImplementation("io.micronaut:micronaut-http-client")
+//    testImplementation("org.junit.jupiter:junit-jupiter-api")
+//    testImplementation("io.micronaut.test:micronaut-test-junit5:2.3.2")
+//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
 
